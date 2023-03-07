@@ -508,12 +508,13 @@ describe('ParquetSchema', function() {
     }, 'Invalid parquet type: UNKNOWN, for Column: stock.quantity\nInvalid parquet type: UNKNOWN, for Column: stock.warehouse');
   });
 
-  it('should indicate which column had an invalid type in a simple flat schema - encoding', function() {
+  it('should indicate which column had an invalid encoding in a simple flat schema', function() {
     assert.throws(() => {
       new parquet.ParquetSchema({
-        quantity: {type: 'UNKNOWN', compression: 'PLAIN'},
+        quantity: {type: 'INT32', encoding: 'UNKNOWN'},
       })
-    }, 'invalid parquet type: UNKNOWN, for Column: quantity');
+    }, 'Unsupported parquet encoding: UNKNOWN, for Column: quantity');
+  });
   });
 
 });
