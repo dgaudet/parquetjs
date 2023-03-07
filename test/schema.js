@@ -515,6 +515,13 @@ describe('ParquetSchema', function() {
       })
     }, 'Unsupported parquet encoding: UNKNOWN, for Column: quantity');
   });
+
+  it('should indicate which column had an invalid compression type in a simple flat schema', function() {
+    assert.throws(() => {
+      new parquet.ParquetSchema({
+        quantity: {type: 'INT32', compression: 'UNKNOWN'},
+      })
+    }, 'Unsupported compression method: UNKNOWN, for Column: quantity');
   });
 
 });
