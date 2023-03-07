@@ -472,7 +472,7 @@ describe('ParquetSchema', function() {
       new parquet.ParquetSchema({
         quantity: {type: 'UNKNOWN'},
       })
-    }, 'invalid parquet type: UNKNOWN, for Column: quantity');
+    }, 'Invalid parquet type: UNKNOWN, for Column: quantity');
   });
 
   it('should indicate each column which has an invalid type in a simple flat schema', function() {
@@ -481,7 +481,7 @@ describe('ParquetSchema', function() {
         quantity: {type: 'UNKNOWN'},
         value: {type: 'UNKNOWN'},
       })
-    }, 'invalid parquet type: UNKNOWN, for Column: quantity\ninvalid parquet type: UNKNOWN, for Column: value');
+    }, 'Invalid parquet type: UNKNOWN, for Column: quantity\nInvalid parquet type: UNKNOWN, for Column: value');
   });
 
   it('should indicate each column which has an invalid type in a nested schema', function() {
@@ -496,7 +496,7 @@ describe('ParquetSchema', function() {
         },
         price: { type: 'UNKNOWN' },
       })
-    }, 'invalid parquet type: UNKNOWN, for Column: stock.quantity\ninvalid parquet type: UNKNOWN, for Column: stock.warehouse');
+    }, 'Invalid parquet type: UNKNOWN, for Column: stock.quantity\nInvalid parquet type: UNKNOWN, for Column: stock.warehouse');
   });
 
   it('should indicate which column had an invalid type in a simple flat schema - encoding', function() {
