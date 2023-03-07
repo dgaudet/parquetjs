@@ -484,6 +484,15 @@ describe('ParquetSchema', function() {
     }, 'Invalid parquet type: UNKNOWN, for Column: quantity\nInvalid parquet type: UNKNOWN, for Column: value');
   });
 
+  it('should indicate each column which has an invalid type when one is correct in a simple flat schema', function() {
+    assert.throws(() => {
+      new parquet.ParquetSchema({
+        quantity: {type: 'INT32'},
+        value: {type: 'UNKNOWN'},
+      })
+    }, 'Invalid parquet type: UNKNOWN, for Column: value');
+  });
+
   it('should indicate each column which has an invalid type in a nested schema', function() {
     assert.throws(() => {
       new parquet.ParquetSchema({
